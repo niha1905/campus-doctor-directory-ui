@@ -1,18 +1,17 @@
-# Welcome to your Lovable project
+# Campus Doctor Directory
 
-## Project info
+A modern web application for finding and connecting with healthcare professionals on campus.
 
-**URL**: https://lovable.dev/projects/2f86aa18-faf0-4752-9635-7ffdad998ff3
+## Project Overview
+
+The Campus Doctor Directory is a comprehensive platform that allows students and staff to:
+- Search for doctors by name or specialty
+- Filter doctors by consultation type (Video or In-Clinic)
+- Sort doctors by fees or experience
+- View detailed doctor profiles
+- Book appointments with healthcare professionals
 
 ## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/2f86aa18-faf0-4752-9635-7ffdad998ff3) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
 
 **Use your preferred IDE**
 
@@ -62,12 +61,26 @@ This project is built with:
 
 ## How can I deploy this project?
 
-Simply open [Lovable](https://lovable.dev/projects/2f86aa18-faf0-4752-9635-7ffdad998ff3) and click on Share -> Publish.
+### Deploy to Vercel
 
-## Can I connect a custom domain to my Lovable project?
+1. Create a Vercel account if you don't have one already
+2. Install the Vercel CLI: `npm i -g vercel`
+3. Run `vercel login` and follow the prompts
+4. Navigate to your project directory and run `vercel`
+5. Follow the prompts to deploy your application
 
-Yes, you can!
+Alternatively, you can connect your GitHub repository to Vercel for automatic deployments:
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+1. Push your code to GitHub
+2. Go to [Vercel](https://vercel.com) and sign in
+3. Click "Add New" > "Project"
+4. Import your GitHub repository
+5. Configure your project settings and click "Deploy"
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+### Other Deployment Options
+
+You can also deploy this project to other platforms like:
+- Netlify
+- GitHub Pages
+- AWS Amplify
+- Firebase Hosting
