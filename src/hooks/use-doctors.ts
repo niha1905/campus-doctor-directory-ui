@@ -30,7 +30,9 @@ export function useDoctors(
         // Extract all unique specialities
         const specialties = new Set<string>();
         data.forEach((doctor: Doctor) => {
-          doctor.speciality.forEach((spec: string) => specialties.add(spec));
+          if (doctor.speciality) {
+            doctor.speciality.forEach((spec: string) => specialties.add(spec));
+          }
         });
         setAllSpecialties(Array.from(specialties).sort());
         
@@ -50,7 +52,7 @@ export function useDoctors(
     
     const matches = doctors
       .filter(doctor => 
-        doctor.name.toLowerCase().includes(query.toLowerCase()))
+        doctor.name && doctor.name.toLowerCase().includes(query.toLowerCase()))
       .map(doctor => doctor.name)
       .slice(0, 3);
       
@@ -62,30 +64,32 @@ export function useDoctors(
     return doctors
       .filter(doctor => {
         // Filter by search query
-        if (searchQuery && !doctor.name.toLowerCase().includes(searchQuery.toLowerCase())) {
+        if (searchQuery && (!doctor.name || !doctor.name.toLowerCase().includes(searchQuery.toLowerCase()))) {
           return false;
         }
         
         // Filter by consultation type
-        if (selectedConsultation && !doctor.moc.includes(selectedConsultation)) {
+        if (selectedConsultation && (!doctor.moc || !doctor.moc.includes(selectedConsultation))) {
           return false;
         }
         
         // Filter by specialties
-        if (selectedSpecialties.length > 0) {
+        if (selectedSpecialties.length > 0 && doctor.speciality) {
           return selectedSpecialties.some(specialty => 
-            doctor.speciality.includes(specialty)
+            doctor.speciality && doctor.speciality.includes(specialty)
           );
+        } else if (selectedSpecialties.length > 0) {
+          return false; // If specialties selected but doctor has no specialities
         }
         
         return true;
       })
       .sort((a, b) => {
         if (sortBy === 'fees') {
-          return a.fee - b.fee; // ascending
+          return (a.fee || 0) - (b.fee || 0); // ascending with fallback to 0
         } 
         if (sortBy === 'experience') {
-          return b.experience - a.experience; // descending
+          return (b.experience || 0) - (a.experience || 0); // descending with fallback to 0
         }
         return 0;
       });
