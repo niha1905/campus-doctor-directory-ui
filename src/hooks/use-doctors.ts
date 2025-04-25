@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useMemo } from 'react';
 import { Doctor, ConsultationType, SortType } from '../types/doctor';
 
