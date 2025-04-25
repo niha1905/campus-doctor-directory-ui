@@ -30,7 +30,9 @@ const DoctorCard = ({ doctor }: DoctorCardProps) => {
               data-testid="doctor-specialty"
               className="text-sm text-gray-600 mb-2"
             >
-              {doctor.speciality.join(', ')}
+              {doctor.speciality && doctor.speciality.length > 0 
+                ? doctor.speciality.join(', ')
+                : 'No speciality listed'}
             </div>
             
             <div className="flex flex-wrap gap-4">
@@ -56,7 +58,7 @@ const DoctorCard = ({ doctor }: DoctorCardProps) => {
             </div>
             
             <div className="mt-3 flex flex-wrap gap-2">
-              {doctor.moc.map((consultType, index) => (
+              {doctor.moc && doctor.moc.map((consultType, index) => (
                 <span 
                   key={index}
                   className={`px-2 py-1 text-xs rounded-full ${
