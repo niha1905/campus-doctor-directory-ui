@@ -78,9 +78,3 @@ Alternatively, you can connect your GitHub repository to Vercel for automatic de
 5. Configure your project settings and click "Deploy"
 
 ### Other Deployment Options
-
-You can also deploy this project to other platforms like:
-- Netlify
-- GitHub Pages
-- AWS Amplify
-- Firebase Hosting
