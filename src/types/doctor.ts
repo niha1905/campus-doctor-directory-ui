@@ -5,7 +5,7 @@ export interface Doctor {
   speciality: string[];
   experience: number;
   fee: number;
-  moc: string[];
+  moc: ConsultationType[];
   image?: string;
 }
 
