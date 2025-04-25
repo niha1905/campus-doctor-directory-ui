@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useMemo } from 'react';
 import { Doctor, ConsultationType, SortType } from '../types/doctor';
 
@@ -14,7 +15,6 @@ export function useDoctors(
   const [error, setError] = useState<Error | null>(null);
   const [allSpecialties, setAllSpecialties] = useState<string[]>([]);
 
-  // Fetch doctors data
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
@@ -24,11 +24,26 @@ export function useDoctors(
           throw new Error('Failed to fetch doctors');
         }
         const data = await response.json();
-        setDoctors(data);
+        
+        // Transform API data to match Doctor interface
+        const transformedDoctors = data.map((doctor: any) => ({
+          id: doctor.id,
+          name: doctor.name.replace('Dr. ', ''),
+          speciality: doctor.specialities.map((spec: any) => spec.name),
+          experience: parseInt(doctor.experience),
+          fee: parseInt(doctor.fees.replace('₹ ', '')),
+          moc: [
+            ...(doctor.video_consult ? ['Video Consult'] : []),
+            ...(doctor.in_clinic ? ['In Clinic'] : [])
+          ] as ConsultationType[],
+          image: doctor.photo
+        }));
+
+        setDoctors(transformedDoctors);
         
         // Extract all unique specialities
         const specialties = new Set<string>();
-        data.forEach((doctor: Doctor) => {
+        transformedDoctors.forEach((doctor: Doctor) => {
           if (doctor.speciality) {
             doctor.speciality.forEach((spec: string) => specialties.add(spec));
           }
