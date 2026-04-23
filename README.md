@@ -59,22 +59,4 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
-## How can I deploy this project?
 
-### Deploy to Vercel
-
-1. Create a Vercel account if you don't have one already
-2. Install the Vercel CLI: `npm i -g vercel`
-3. Run `vercel login` and follow the prompts
-4. Navigate to your project directory and run `vercel`
-5. Follow the prompts to deploy your application
-
-Alternatively, you can connect your GitHub repository to Vercel for automatic deployments:
-
-1. Push your code to GitHub
-2. Go to [Vercel](https://vercel.com) and sign in
-3. Click "Add New" > "Project"
-4. Import your GitHub repository
-5. Configure your project settings and click "Deploy"
-
-### Other Deployment Options
